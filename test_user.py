@@ -1,7 +1,5 @@
 import pytest
 
-from pprint import pprint
-
 
 from sample import User, UserSchema
 
@@ -34,6 +32,4 @@ def test_dump_user(schema: UserSchema, user: User):
 
 def test_dump_many(schema: UserSchema, user_list: list):
     serialized = schema.dump(user_list, many=True)
-    print("\ndumping the list:")
-    pprint(serialized)
     assert len(serialized) == 2

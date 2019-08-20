@@ -12,6 +12,9 @@ class User(object):
         self.name = name
         self.email = email
 
+    def __repr__(self):
+        return f"<{self.name}, {self.email}>"
+
 
 class UserSchema(Schema):
     class Meta:
@@ -24,6 +27,6 @@ class UserSchema(Schema):
     @post_dump(pass_many=False)
     def _post_dump(self, data, many=False, original_data=None):
         assert many is False, "@post_dump is set to pass_many=False. This function should not receive many=True"
-        
+
         data['dumped_at'] = int(time.time())
         return data
